@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href=" {{ url_for ('static', filename = 'styles/principal.css')    }}"
+
+</head>
+
+<body class="dark-theme">
+    <header>
+        <button id="addResourceBtn">Adicionar/Excluir Recursos</button>
+
+        <button onclick="">Ver Inventário</button>
+
+    </header>
+
+    <main>
+        <h1> Gestão de Recursos</h1>
+
+        <div class="conteiner-inventario" id="conteiner-form-item" c-container ="{{ url_for ('inventario.form_new_item') }}"></div>
+
+        <div class="conteiner-inventario" c-container ="{{ url_for ('inventario.listar_inventario') }}"></div>
+
+    </main>
+
+    <!-- Área onde o popup será carregado -->
+    <div id="popupContainer" class="popup-container" style="display: none;">
+        <div class="popup-content" id="popupContent"></div>
+    </div>
+
+    <script>
+        // Função para carregar adicionar.html dentro da página -- Coloquei aqui pra ficar mais fácil e não precisar mexer no script do popup
+        document.getElementById('addResourceBtn').addEventListener('click', function () {
+            fetch('adicionar.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('popupContent').innerHTML = html;
+                    document.getElementById('popupContainer').style.display = 'block';
+                    document.body.style.overflow = 'hidden';  // Evitar scroll ao abrir o popup
+                });
+        });
+
+        // Fechar popup quando clicar fora dele
+        document.getElementById('popupContainer').addEventListener('click', function (event) {
+            if (event.target === this) {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto';  // Restaurar scroll
+            }
+        });
+    </script>
+    <script src=" {{ url_for('static', filename= 'javascript/cru.js') }} " ></script>
+</body>
+
+</html>

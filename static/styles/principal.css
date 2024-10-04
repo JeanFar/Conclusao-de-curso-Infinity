@@ -1,0 +1,85 @@
+/* Fundo escurecido quando o popup estiver ativo */
+.popup-container {
+    position: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: grid;
+    grid-column: 1;
+    grid-row: 1;
+
+    /* Centraliza o conteúdo horizontal e verticalmente */
+    z-index: 999;
+    /* Garante que o popup fique acima dos outros elementos */
+}
+
+.popup-content {
+    background-color: #2e2e2e;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Para garantir que a página principal seja ofuscada */
+body.dark-theme {
+    background-color: #1c1c1c;
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+/* Estilo do Header */
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2a2a2a;
+    padding: 20px;
+    box-shadow: 0 4px 2px -2px gray;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Botões do Header */
+button {
+    background-color: #9d50bb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6e34a1;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 80px;
+}

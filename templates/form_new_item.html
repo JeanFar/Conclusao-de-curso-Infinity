@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Novo item</title>
+</head>
+<body>
+    <form id="resourceForm" 
+    class= "c-form" 
+        {% if item %}
+            action=" {{ url_for('inventario.atualizar_item', item_id= item.id)}}" 
+
+        {% else %}
+            action=" {{ url_for('inventario.inserir_item_inventario')}}" 
+        {% endif %}
+
+        method= "{% if item %}PUT{% else %}POST{% endif %}"
+
+        {% if item %}
+            c-swap = ".item-{{item.id}}"
+            
+        {% else %}
+            c-append = " #lista-itens " 
+        {% endif %}
+
+    c-reload-container="true"
+        >
+        
+        <label for="resourceName">Nome do Recurso:</label>
+        <input type="text" id="resourceName" name="nome" {% if item %} value = " {{ item.nome }} " {% endif %}  required>
+
+        <label for="resourceType">Tipo de Recurso:</label>
+
+        <select id="resourceType" required name="tipo">
+            <option value="equipamento" {% if item and item.tipo == 'equipamento' %}selected{% endif %}>Equipamento</option>
+            <option value="veiculo" {% if item and item.tipo == 'veiculo' %}selected{% endif %}>Veículo</option>
+            <option value="dispositivo" {% if item and item.tipo == 'dispositivo' %}selected{% endif %}>Dispositivo</option>
+        </select>
+        
+
+        <button type="submit" >
+            {% if item %}Salvar{% else %}Criar{% endif %}
+        </button>
+
+        
+    </form>
+    
+</body>
+</html>

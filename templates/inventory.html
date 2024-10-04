@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Recursos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src=" {{ url_for('static', filename= 'cru.js') }} " ></script>
+    <script src="inventoryControl.js" defer></script>
+</head>
+
+<body class="dark-theme">
+
+    
+
+
+    <h2>Lista de Recursos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col" >id</th>
+                <th scope="col" >Nome</th>
+                <th scope="col" >Tipo</th>
+
+            </tr>
+        </thead>
+
+        <tbody id="lista-itens">
+
+        {% for item in inventario %}
+            {% include 'item_inventario.html' %}
+        {% endfor %} 
+
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+    <tr class="cliente-{{item.id}}">
+        <th scope="row"> {{ item.id}}</th>
+        <th> {{ item.nome}}</th>
+        <th> {{ item.tipo}}</th>
+        <td>
+            <button class="btn btn-primary" c-get=" {{ url_for('inventario.edit_item', item_id = item.id) }} " c-target= "#conteiner-form-item" 
+            >Editar</button>
+
+
+
+
+            <button class="btn btn-danger" 
+            c-delete=" {{ url_for('inventario.deletar_item', item_id = item.id) }}   " c-remove-closest= "tr">
+            Deletar</button>
+        </td>
+    
+    </tr>
+
+
+
